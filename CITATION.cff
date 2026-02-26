@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: cirfgdps
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: yxzhin
+    email: yxzhin@gmail.com
+    affiliation: cirhalfstudio
+  - given-names: lemogames
+    affiliation: cirhalfstudio
+repository-code: 'https://github.com/cirhalfstudio/cirfgdps'
+url: 'https://cirf.hhos.net'
+abstract: >-
+  a geometry dash private server implementation w/ FastAPI.
+  with <3 by lemo && yux ^^
+keywords:
+  - gdps
+  - geometry-dash
+  - fastapi
+license: GPL-3.0
+version: v0.1.0
+date-released: '2026-02-26'
