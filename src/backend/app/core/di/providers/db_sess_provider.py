@@ -4,7 +4,7 @@ from typing import Any
 from dishka import Provider, Scope, provide
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ...shared.utils import Database
+from ....shared.utils import Database
 
 
 class DBSessionProvider(Provider):
