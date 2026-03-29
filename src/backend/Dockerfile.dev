@@ -18,6 +18,6 @@ EXPOSE 8000
 
 COPY ./src/backend/entrypoint.dev.sh ./
 
-RUN chmod +x entrypoint.dev.sh
+RUN chmod +x ./entrypoint.dev.sh
 
-CMD ["entrypoint.dev.sh"]
+CMD ["./entrypoint.dev.sh"]
