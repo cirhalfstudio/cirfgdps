@@ -27,12 +27,18 @@ prod = [
     "gunicorn>=25.1.0",
 ]
 
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+backend = { path = "src/backend" }
+
 [tool.ruff]
 line-length = 88
 indent-width = 4
 target-version = "py313"
 exclude = [
-    "frontend",
+    "src/frontend",
     "*/alembic/*"
 ]
 
@@ -75,7 +81,8 @@ disallow_subclassing_any = false
 explicit_package_bases = true
 check_untyped_defs = true
 exclude = [
-    "^src/backend/alembic/"
+  "^src/frontend/",
+  "^src/backend/alembic/"
 ]
 
 [tool.pytest.ini_options]
