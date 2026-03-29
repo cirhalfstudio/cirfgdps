@@ -54,3 +54,6 @@ jobs:
       - run: uv sync --frozen
       - run: cp .env.example .env
       - run: uv run pytest
+      - uses: codecov/codecov-action@v5.5.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
