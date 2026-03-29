@@ -2,11 +2,11 @@ from dishka.integrations.fastapi import setup_dishka
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from .core.config import Config
-from .core.di import container
-from .core.services.players.presentation.api.routers.cirf import players_router
-from .core.services.players.presentation.api.routers.gd import accounts_router
-from .core.shared.utils import TraceIDMiddleware, lifespan
+from .app.core.config import Config
+from .app.core.di import container
+from .app.core.services.players.presentation.api.routers.cirf import players_router
+from .app.core.services.players.presentation.api.routers.gd import accounts_router
+from .app.core.shared.utils import TraceIDMiddleware, lifespan
 
 app = FastAPI(
     lifespan=lifespan,
