@@ -13,11 +13,6 @@ services:
       - "8000:8000"
     env_file:
       - .env
-    depends_on:
-      redis:
-        condition: service_healthy
-      postgres:
-        condition: service_healthy
 
   postgres:
     image: postgres:latest
@@ -31,11 +26,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d app"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
 
   redis:
     image: redis:latest
@@ -51,11 +41,6 @@ services:
       --save 60 1000
       --maxmemory 256mb
       --maxmemory-policy allkeys-lru
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
 
 volumes:
   uv-venv:
