@@ -6,7 +6,7 @@ from .app.config import get_config
 from .app.core.di import container
 from .app.core.services.players.presentation.api.routers.cirf import players_router
 from .app.core.services.players.presentation.api.routers.gd import accounts_router
-from .app.shared.utils import TraceIDMiddleware, lifespan
+from .app.shared.utils import TraceIDMiddleware, lifespan, setup_error_handling
 
 config = get_config()
 
@@ -34,3 +34,5 @@ app.include_router(players_router)
 app.include_router(accounts_router)
 
 setup_dishka(container=container, app=app)
+
+setup_error_handling(app=app)
