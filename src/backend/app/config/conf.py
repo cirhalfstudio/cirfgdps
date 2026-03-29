@@ -17,7 +17,12 @@ class Config(BaseSettings):
     APP_SECRET_KEY: SecretStr = Field(min_length=32)  # atleast 32 characters
     APP_CSRF_SECRET: SecretStr = Field(min_length=32)  # atleast 32 characters
 
-    DATABASE_URL: str = Field(min_length=1)
+    DATABASE_HOST: str = Field(min_length=1)
+    DATABASE_PORT: str = Field(min_length=1)
+    DATABASE_USER: str = Field(min_length=1)
+    DATABASE_PASSWORD: str = Field(min_length=1)
+    DATABASE_NAME: str = Field(min_length=1)
+
     REDIS_URL: str = Field(min_length=1)
 
     # optional
@@ -31,6 +36,13 @@ class Config(BaseSettings):
     COOKIE_SECURE: bool = False  # change in prod (HTTPS)
     COOKIE_SAMESITE: str = "lax"  # strict or none (none requires SECURE)
     COOKIE_DOMAIN: str | None = None  # e.g. "example.com" if needed
+
+    @property
+    def DATABASE_URL(self) -> str:  # noqa: N802
+        return (
+            f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}"
+            f"@{self.DATABASE_HOST}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
+        )
 
     @property
     def ACCESS_TTL(self) -> timedelta:  # noqa: N802
