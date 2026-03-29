@@ -5,8 +5,8 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from src.backend.core.shared.utils import Base
-from src.backend.core.config import Config
+from src.backend.app.shared.utils import Base
+from src.backend.app.config import get_config
 
 from alembic import context
 
@@ -19,13 +19,14 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", Config.DATABASE_URL)
+app_config = get_config()
+config.set_main_option("sqlalchemy.url", app_config.DATABASE_URL)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from src.backend.core.services.players.infrastructure.db_models import *
+from src.backend.app.core.services.players.infrastructure.db_models import *
 
 target_metadata = Base.metadata
 

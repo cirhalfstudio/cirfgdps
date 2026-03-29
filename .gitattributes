@@ -15,6 +15,7 @@
 uv.lock           -merge
 package-lock.json -merge
 pnpm-lock.yaml    -merge
+bun.lock          -merge
 
 *.jpg   binary
 *.jpeg  binary

@@ -2,27 +2,30 @@ from dishka.integrations.fastapi import setup_dishka
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from .core.config import Config
-from .core.di import container
-from .core.services.players.presentation.api.routers.cirf import players_router
-from .core.services.players.presentation.api.routers.gd import accounts_router
-from .core.shared.utils import TraceIDMiddleware, lifespan
+from .app.config import get_config
+from .app.core.di import container
+from .app.core.services.players.presentation.api.routers.cirf import players_router
+from .app.core.services.players.presentation.api.routers.gd import accounts_router
+from .app.shared.infrastructure.dto import BaseResponseDTO
+from .app.shared.utils import TraceIDMiddleware, lifespan, setup_error_handling
+
+config = get_config()
 
 app = FastAPI(
     lifespan=lifespan,
-    title=Config.APP_NAME,
-    description=Config.APP_DESCRIPTION,
-    version=Config.APP_VERSION,
-    docs_url="/docs" if Config.ENABLE_API_DOCS else None,
-    redoc_url="/redoc" if Config.ENABLE_API_DOCS else None,
-    openapi_url="/openapi.json" if Config.ENABLE_API_DOCS else None,
+    title=config.APP_NAME,
+    description=config.APP_DESCRIPTION,
+    version=config.APP_VERSION,
+    docs_url="/docs" if config.ENABLE_API_DOCS else None,
+    redoc_url="/redoc" if config.ENABLE_API_DOCS else None,
+    openapi_url="/openapi.json" if config.ENABLE_API_DOCS else None,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[config.FRONTEND_URL],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -32,3 +35,10 @@ app.include_router(players_router)
 app.include_router(accounts_router)
 
 setup_dishka(container=container, app=app)
+
+setup_error_handling(app=app)
+
+
+@app.get("/", response_model=BaseResponseDTO)
+async def healthcheck():
+    return {"code": "SUCCESS", "message": "it works!! :tada:", "success": True}
