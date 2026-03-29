@@ -1,7 +1,9 @@
 from redis.asyncio import Redis
 
-from ...config import Config
+from ...config import get_config
 from .logging import StructuredLogger
+
+config = get_config()
 
 
 class RedisService:
@@ -17,8 +19,8 @@ class RedisService:
     async def init(cls) -> None:
         """Инициализация пула соединений с Redis."""
         cls._redis = Redis(
-            host=Config.REDIS_HOST,  # type: ignore
-            port=Config.REDIS_PORT,  # type: ignore
+            host=config.REDIS_HOST,  # type: ignore
+            port=config.REDIS_PORT,  # type: ignore
             decode_responses=True,
             max_connections=20,
         )
