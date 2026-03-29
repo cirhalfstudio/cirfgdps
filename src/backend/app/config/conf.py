@@ -17,12 +17,10 @@ class Config(BaseSettings):
     APP_SECRET_KEY: SecretStr = Field(min_length=32)  # atleast 32 characters
     APP_CSRF_SECRET: SecretStr = Field(min_length=32)  # atleast 32 characters
 
-    DATABASE_URL_DEV: str = Field(min_length=1)
-    DATABASE_URL_PROD: str = Field(min_length=1)
+    DATABASE_URL: str = Field(min_length=1)
     REDIS_URL: str = Field(min_length=1)
 
     # optional
-    PRJ_DEV_MODE: bool = True
     ENABLE_API_DOCS: bool = True
     FRONTEND_URL: str = "http://localhost:5173"
     API_URL: str = "http://localhost:8000"
@@ -33,10 +31,6 @@ class Config(BaseSettings):
     COOKIE_SECURE: bool = False  # change in prod (HTTPS)
     COOKIE_SAMESITE: str = "lax"  # strict or none (none requires SECURE)
     COOKIE_DOMAIN: str | None = None  # e.g. "example.com" if needed
-
-    @property
-    def DATABASE_URL(self) -> str:  # noqa: N802
-        return self.DATABASE_URL_DEV if self.PRJ_DEV_MODE else self.DATABASE_URL_PROD
 
     @property
     def ACCESS_TTL(self) -> timedelta:  # noqa: N802
