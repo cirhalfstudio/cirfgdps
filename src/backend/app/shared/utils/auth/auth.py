@@ -9,7 +9,7 @@ from joserfc.jwk import OctKey
 from joserfc.jwt import JWTClaimsRegistry, Token, decode, encode
 
 from ....config import get_config
-from .. import StructuredLogger
+from ..logging import StructuredLogger
 
 config = get_config()
 

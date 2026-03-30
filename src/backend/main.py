@@ -7,7 +7,7 @@ from .app.di import container
 from .app.services.players.presentation.api.routers.cirf import players_router
 from .app.services.players.presentation.api.routers.gd import accounts_router
 from .app.shared.infrastructure.dto import BaseResponseDTO
-from .app.shared.utils import TraceIDMiddleware, lifespan, setup_error_handling
+from .app.shared.utils.app import TraceIDMiddleware, lifespan, setup_error_handling
 
 config = get_config()
 

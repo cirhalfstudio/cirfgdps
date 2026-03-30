@@ -10,8 +10,8 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
 )
 
-from ...config import get_config
-from .logging import StructuredLogger
+from ....config import get_config
+from ..logging import StructuredLogger
 
 config = get_config()
 
