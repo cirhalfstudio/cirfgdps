@@ -26,7 +26,7 @@ config.set_main_option("sqlalchemy.url", app_config.DATABASE_URL)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from src.backend.app.core.services.players.infrastructure.db_models import *
+from src.backend.app.services.players.infrastructure.db_models import *
 
 target_metadata = Base.metadata
 

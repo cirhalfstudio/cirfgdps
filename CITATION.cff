@@ -16,14 +16,17 @@ authors:
 repository-code: 'https://github.com/cirhalfstudio/cirfgdps'
 url: 'https://cirf.hhos.net'
 abstract: >-
-  a geometry dash private server implementation w/ FastAPI.
-  with <3 by lemo && yux ^^
+  a geometry dash private server implementation w/ FastAPI
+  && Vue.js. with <3 by lemo && yux ^^
 keywords:
   - gdps
-  - geometry-dash
+  - geometrydash
   - fastapi
-  - vue-js
+  - vuejs
   - primevue
+  - domain-driven-design
+  - gmd
+  - gd
 license: GPL-3.0
 version: v0.1.0
-date-released: '2026-03-29'
+date-released: '2026-03-30'

@@ -2,7 +2,7 @@ from json import dumps, loads
 from uuid import UUID
 
 from ...domain.ports import BaseRefreshSessionStorage, RefreshSession
-from ...utils import RedisClient
+from ...utils.auth import RedisClient
 
 
 class RedisRefreshSessionStorage(BaseRefreshSessionStorage):

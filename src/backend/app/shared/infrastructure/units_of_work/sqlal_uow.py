@@ -3,7 +3,7 @@ from typing import Self
 from sqlalchemy.ext.asyncio import AsyncSession, AsyncSessionTransaction
 
 from ...domain.ports import BaseUnitOfWork
-from ...utils import StructuredLogger
+from ...utils.logging import StructuredLogger
 
 
 class SqlAlchemyUnitOfWork(BaseUnitOfWork):

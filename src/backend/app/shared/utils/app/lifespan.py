@@ -4,9 +4,9 @@ from typing import Any
 
 from fastapi import FastAPI
 
-from .database import Database
-from .logging import StructuredLogger
-from .redis_client import RedisClient
+from ..auth.redis_client import RedisClient
+from ..db import Database
+from ..logging import StructuredLogger
 
 
 @asynccontextmanager

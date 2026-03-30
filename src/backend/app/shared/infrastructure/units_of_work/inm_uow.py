@@ -1,5 +1,5 @@
 from ...domain.ports import BaseUnitOfWork
-from ...utils import StructuredLogger
+from ...utils.logging import StructuredLogger
 from ..inm_storage import InMemoryStorage
 
 

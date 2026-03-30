@@ -7,11 +7,11 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from ....app.shared.domain import (
+from ....shared.domain import (
     DomainError,
 )
-from .logging import StructuredLogger
-from .traceid_middleware import TraceIDMiddleware, trace_id_var
+from ..logging import StructuredLogger, trace_id_var
+from .traceid_middleware import TraceIDMiddleware
 
 
 class ErrorResponse(BaseModel):
