@@ -82,11 +82,17 @@ class ProfileIcons:
         return cls(_icons=cls._default.copy())
 
     @classmethod
-    def from_dict(cls, icons_dict: dict[str, int]) -> Self:
+    def from_dict(cls, icons_dict: dict[IconKey, int]) -> Self:
         """
         load profile icons from dict
         """
         return cls(_icons=icons_dict.copy())  # type: ignore
+
+    def to_dict(self) -> dict[IconKey, int]:
+        """
+        get a copy of the inner icons state
+        """
+        return self._icons.copy()  # type: ignore
 
     def get(self, key: IconKey) -> int:
         """get profile icon id by key"""
@@ -98,6 +104,6 @@ class ProfileIcons:
             raise InvalidValueError("icon id cannot be negative")
         self._icons[key.value] = value
 
-    def view(self) -> MappingProxyType[str, int]:
+    def view(self) -> MappingProxyType[IconKey, int]:
         """get an immutable readonly profile icons view"""
         return MappingProxyType(self._icons)  # type: ignore

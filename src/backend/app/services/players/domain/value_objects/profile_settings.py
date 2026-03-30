@@ -47,11 +47,17 @@ class ProfileSettings:
         return cls(_settings=cls._default.copy())
 
     @classmethod
-    def from_dict(cls, settings_dict: dict[str, SettingType]) -> Self:
+    def from_dict(cls, settings_dict: dict[SettingKey, SettingType]) -> Self:
         """
         load profile settings from dict
         """
         return cls(_settings=settings_dict.copy())  # type: ignore
+
+    def to_dict(self) -> dict[SettingKey, SettingType]:
+        """
+        get a copy of the inner settings state
+        """
+        return self._icons.copy()  # type: ignore
 
     def get(self, key: SettingKey) -> SettingType:
         """get profile setting value by key"""
@@ -61,6 +67,6 @@ class ProfileSettings:
         """update profile setting value by key"""
         self._settings[key.value] = value  # type: ignore
 
-    def view(self) -> MappingProxyType[str, SettingType]:
+    def view(self) -> MappingProxyType[SettingKey, SettingType]:
         """get an immutable readonly profile settings view"""
         return MappingProxyType(self._settings)  # type: ignore
