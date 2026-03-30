@@ -3,21 +3,21 @@ from dataclasses import dataclass
 from ....shared.domain import DomainError
 
 
-@dataclass
+@dataclass(slots=True)
 class InvalidLengthError(DomainError):
     message = "InvalidLengthError"
 
 
-@dataclass
+@dataclass(slots=True)
 class InvalidKeyError(DomainError):
     message = "InvalidKeyError"
 
 
-@dataclass
+@dataclass(slots=True)
 class InvalidValueError(DomainError):
     message = "InvalidValueError"
 
 
-@dataclass
+@dataclass(slots=True)
 class DeletedError(DomainError):
     message = "DeletedError"
