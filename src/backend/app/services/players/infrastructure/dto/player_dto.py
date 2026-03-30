@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
 
-from ...domain.value_objects import ProfileIconsSchema, ProfileSettingsSchema
+from ...domain.value_objects import SettingType
 
 
 class PlayerDTO(BaseModel):
@@ -12,8 +12,8 @@ class PlayerDTO(BaseModel):
     username: str
     email: str
     is_active: bool
-    icons_json: ProfileIconsSchema
-    settings_json: ProfileSettingsSchema
+    icons: dict[str, int]
+    settings: dict[str, SettingType]
     registered_at: datetime
     deleted_at: datetime | None
 
