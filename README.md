@@ -22,3 +22,11 @@ a geometry dash private server implementation w/ FastAPI && Vue.js. with &lt;3 b
 3. for production: `docker compose -f docker-compose.prod.yml up`
 
 - the client will be accessible at `http://localhost:5173` in dev mode or at `http://localhost` in prod mode
+- the server will be accessible at `http://localhost:8000`
+
+## credits
+
+- [@svlemogames](https://github.com/svlemogames) for the frontend
+- [@Wyliemaster](https://github.com/Wyliemaster) and his [GDDocs](https://wyliemaster.github.io/gddocs) for geometry dash api reference
+- [@lander1x](https://github.com/lander1x) for some of the backend utils code
+- [@GrujicFilipRS](https://github.com/GrujicFilipRS) for some help too
