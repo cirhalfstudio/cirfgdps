@@ -1,4 +1,3 @@
-from ctypes import c_int32
 from datetime import UTC, datetime
 from random import randint
 from typing import Any
@@ -7,18 +6,23 @@ from sqlalchemy import Boolean, DateTime, String
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
+from .....config import get_const
 from .....shared.utils.db import Base
+
+const = get_const()
 
 
 class DBPlayer(Base):
+    """class that represents a player in the database"""
+
     __tablename__ = "players"
 
     player_id: Mapped[int] = mapped_column(
         primary_key=True,
-        default=lambda: randint(0, c_int32(-1).value),  # max int32 value
+        default=lambda: randint(0, const.MAX_INT32_VALUE),
     )
     username: Mapped[str] = mapped_column(
-        String(33),  # TODO: actual gd username length limit
+        String(const.USERNAME_MAX_LENGTH),
         nullable=False,
         unique=True,
     )
@@ -27,7 +31,7 @@ class DBPlayer(Base):
         nullable=False,
     )
     email: Mapped[str] = mapped_column(
-        String(100),  # TODO: actual gd email length limit
+        String(const.EMAIL_MAX_LENGTH),
         nullable=False,
         unique=True,
     )
