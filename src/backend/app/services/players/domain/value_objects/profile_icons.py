@@ -81,6 +81,13 @@ class ProfileIcons:
         """
         return cls(_icons=cls._default.copy())
 
+    @classmethod
+    def from_dict(cls, icons_dict: dict[str, int]) -> Self:
+        """
+        load profile icons from dict
+        """
+        return cls(_icons=icons_dict.copy())  # type: ignore
+
     def get(self, key: IconKey) -> int:
         """get profile icon id by key"""
         return self._icons[key.value]
