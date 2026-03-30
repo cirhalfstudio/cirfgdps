@@ -1,5 +1,4 @@
-from datetime import UTC, datetime
-from random import randint
+from datetime import datetime
 from typing import Any
 
 from sqlalchemy import Boolean, DateTime, String
@@ -19,7 +18,6 @@ class DBPlayer(Base):
 
     player_id: Mapped[int] = mapped_column(
         primary_key=True,
-        default=lambda: randint(0, const.MAX_INT32_VALUE),
     )
     username: Mapped[str] = mapped_column(
         String(const.USERNAME_MAX_LENGTH),
@@ -43,17 +41,14 @@ class DBPlayer(Base):
     icons_json: Mapped[str] = mapped_column(
         JSONB,
         nullable=False,
-        default=dict,  # TODO // FIXME
     )
     settings_json: Mapped[dict[str, Any]] = mapped_column(
         JSONB,
         nullable=False,
-        default=dict,  # TODO // FIXME
     )
     registered_at: Mapped[datetime] = mapped_column(
         DateTime,
         nullable=False,
-        default=lambda: datetime.now(UTC),
     )
     deleted_at: Mapped[datetime | None] = mapped_column(
         DateTime,

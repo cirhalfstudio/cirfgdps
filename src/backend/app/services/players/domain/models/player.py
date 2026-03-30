@@ -1,8 +1,9 @@
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
+from random import randint
 from typing import Self
-from uuid import UUID, uuid4
 
+from .....config import get_const
 from ..exceptions import DeletedError
 from ..value_objects import (
     Email,
@@ -11,12 +12,14 @@ from ..value_objects import (
     UserName,
 )
 
+const = get_const()
+
 
 @dataclass(slots=True)
 class Player:
     """class that represents a player"""
 
-    user_id: UUID
+    player_id: int
     username: UserName
     hashed_password: str = field(repr=False, hash=False)
     email: Email
@@ -30,7 +33,7 @@ class Player:
     def create(cls, username: str, hashed_password: str, email: str) -> Self:
         """factory of new players"""
         return cls(
-            user_id=uuid4(),
+            player_id=randint(0, const.MAX_INT32_VALUE),
             username=UserName(username),
             hashed_password=hashed_password,
             email=Email(email),
