@@ -33,8 +33,8 @@ class PlayerMapper:
             hashed_password=player.hashed_password,
             email=player.email.value,
             is_active=player.is_active,
-            icons=player.icons.view().copy(),
-            settings=player.settings.view().copy(),
+            icons=player.icons.to_dict(),
+            settings=player.settings.to_dict(),
             registered_at=player.registered_at,
             deleted_at=player.deleted_at,
         )
@@ -48,8 +48,8 @@ class PlayerMapper:
             username=player.username.value,
             email=player.email.value,
             is_active=player.is_active,
-            icons=player.icons.view().copy(),
-            settings=player.settings.view().copy(),
+            icons=player.icons.to_dict(),
+            settings=player.settings.to_dict(),
             registered_at=player.registered_at,
             deleted_at=player.deleted_at,
         )
