@@ -1,6 +1,6 @@
 from .email import Email
-from .player_icons import IconKey, ProfileIcons, ProfileIconsSchema
-from .player_settings import (
+from .profile_icons import IconKey, ProfileIcons, ProfileIconsSchema
+from .profile_settings import (
     ProfileSettings,
     ProfileSettingsSchema,
     SettingKey,
