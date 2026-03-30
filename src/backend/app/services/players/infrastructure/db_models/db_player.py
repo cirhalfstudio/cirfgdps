@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import Boolean, DateTime, String
+from sqlalchemy import Boolean, DateTime, Index, String
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -54,4 +54,12 @@ class DBPlayer(Base):
         DateTime,
         nullable=True,
         default=None,
+    )
+
+    __table_args__ = (
+        Index("idx_players_active", is_active, postgresql_where=is_active.is_(True)),
+        Index("idx_players_icons_json", icons_json, postgresql_using="gin"),
+        Index("idx_players_settings_json", settings_json, postgresql_using="gin"),
+        Index("idx_players_registered_at", registered_at),
+        Index("idx_players_not_deleted", deleted_at, deleted_at.is_(None)),
     )
