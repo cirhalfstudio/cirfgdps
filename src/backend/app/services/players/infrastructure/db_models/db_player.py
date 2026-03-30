@@ -6,7 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from .....config import get_const
 from .....shared.utils.db import Base
-from ...domain.value_objects import SettingType
+from ...domain.value_objects import IconKey, SettingKey, SettingType
 
 const = get_const()
 
@@ -38,12 +38,12 @@ class DBPlayer(Base):
         nullable=False,
         default=False,
     )
-    icons: Mapped[dict[str, int]] = mapped_column(
+    icons: Mapped[dict[IconKey, int]] = mapped_column(
         JSONB,
         nullable=False,
         name="icons_json",
     )
-    settings: Mapped[dict[str, SettingType]] = mapped_column(
+    settings: Mapped[dict[SettingKey, SettingType]] = mapped_column(
         JSONB,
         nullable=False,
         name="settings_json",
