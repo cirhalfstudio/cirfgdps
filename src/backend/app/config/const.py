@@ -10,7 +10,7 @@ class Constants(BaseSettings):
     USERNAME_MAX_LENGTH: int = 33  # TODO: actual gd username length limit
     USERNAME_PATTERN: str = r"^[a-zA-Z0-9 _.-]+$"
 
-    EMAIL_MIN_LENGTH: int = 5
+    EMAIL_MIN_LENGTH: int = 6
     EMAIL_MAX_LENGTH: int = 100  # TODO: actual gd email length limit
     EMAIL_PATTERN: str = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
