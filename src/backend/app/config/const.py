@@ -8,7 +8,7 @@ class Constants(BaseSettings):
 
     USERNAME_MIN_LENGTH: int = 3
     USERNAME_MAX_LENGTH: int = 33  # TODO: actual gd username length limit
-    USERNAME_PATTERN: str = r"^[a-zA-Z0-9_.-]+$"
+    USERNAME_PATTERN: str = r"^[a-zA-Z0-9 _.-]+$"
 
     EMAIL_MIN_LENGTH: int = 5
     EMAIL_MAX_LENGTH: int = 100  # TODO: actual gd email length limit
