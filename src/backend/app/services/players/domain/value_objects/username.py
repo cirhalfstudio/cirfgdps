@@ -24,7 +24,6 @@ class UserName:
             raise InvalidLengthError(
                 f"username must be from {const.USERNAME_MIN_LENGTH} to {const.USERNAME_MAX_LENGTH} characters long"
             )
-
         if not fullmatch(const.USERNAME_PATTERN, self.value):
             raise InvalidValueError(
                 "username must only contain ascii letters, numbers, underscores, dots or dashes"

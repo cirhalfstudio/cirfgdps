@@ -1,4 +1,3 @@
-from ctypes import c_int32
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -9,13 +8,13 @@ class Constants(BaseSettings):
 
     USERNAME_MIN_LENGTH: int = 3
     USERNAME_MAX_LENGTH: int = 33  # TODO: actual gd username length limit
-    USERNAME_PATTERN: str = r"^[a-zA-Z0-9_.- ]"
+    USERNAME_PATTERN: str = r"^[a-zA-Z0-9_.-]+$"
 
     EMAIL_MIN_LENGTH: int = 5
     EMAIL_MAX_LENGTH: int = 100  # TODO: actual gd email length limit
-    EMAIL_PATTERN: str = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    EMAIL_PATTERN: str = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
-    MAX_INT32_VALUE: int = c_int32(-1).value
+    MAX_INT32_VALUE: int = (1 << 31) - 1
 
     model_config = SettingsConfigDict(env_file=None)
 
